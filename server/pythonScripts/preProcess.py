@@ -10,6 +10,6 @@ def convert(file_path):
     print("Resizing image to 48x48 scale...")
     img = cv2.resize(gray,(48, 48))
     print("Resized...")
-    cv2.imwrite(filename='uploads/saved_img.jpg', img=img)
+    cv2.imwrite(filename='D:/buffer_/uploads/saved_img.jpg', img=img)
     print("Image saved!")
-    return "uploads/saved_img.jpg"
+    return "D:/buffer_/uploads/saved_img.jpg"

@@ -1,16 +1,14 @@
 #use model2.h5
 from pythonScripts import preProcess
+from keras.models import load_model
+import cv2
+from matplotlib import pyplot as plt
 
 def giveResult(file_path):
     saved_path = preProcess.convert(file_path)
-    from keras.models import load_model
     mymodel = load_model('server//model2.h5') #91% accuracy
 
     # mymodel.summary()
-
-    import cv2
-    # from matplotlib import pyplot as plt
-
     test_img = cv2.imread(saved_path)
     # plt.imshow(test_img)
     # plt.show()

@@ -27,10 +27,10 @@ async function uploadFile() {
             console.log('Network response was not ok');
             // throw new Error('Network response was not ok');
         }
-        console.log("lol2");
+        // console.log("lol2");
         const result = await response.text();
         console.log(result);
-        prompt(result);
+        // prompt(result);
         resultDisplay.textContent = `Backend response: ${result}`;
 
         // const data = await response.json();

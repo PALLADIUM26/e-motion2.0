@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 import os
 from pythonScripts import predict
 from flask_cors import CORS
+import cv2
+import numpy as np
 
 app = Flask(__name__)
 CORS(app)
@@ -23,19 +25,28 @@ def upload_file():
         # return jsonify({'message': 'No file part'}), 400
 
     file = request.files['file']
-    print(file)
+    # print(file)
     if file.filename == '':
         return 'No selected file', 400
         # return jsonify({'message': 'No selected file'}), 400
+    
+    file_bytes = np.frombuffer(file.read(), np.uint8)
+    img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
+
+    if img is None:
+        return "Failed to decode image", 400
+    
+    file_path = 'D:/buffer_/uploads/uploaded_image.jpg'
+    cv2.imwrite(file_path, img)
 
     # if file:
-    # Save the file to the uploads folder
-    file_path = os.path.join(UPLOAD_FOLDER, file.filename)
-    print(file_path)
-    file.save(file_path)
+    # file_path = os.path.join(UPLOAD_FOLDER, file.filename)
+    # print(file_path)
+    # file.save(file_path)
+
     res = predict.giveResult(file_path)
-    print(type(res))
-    print(res)
+    # print(type(res))
+    # print(res)
     return res, 200, {'Content-Type': 'text/plain'}
     # return str(res), 200, {'Content-Type': 'text/plain'}
     # return jsonify({'prediction': res}), 200
