@@ -56,7 +56,7 @@ e-motion/
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/PALLADIUM26/e-motion.git
+   git clone https://github.com/PALLADIUM26/e-motion2.0.git
    ```
 2. Navigate to the project directory:
    ```bash
